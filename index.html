@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keyboard Tester – Tes Semua Tombol Keyboard Online</title>
+  <meta name="description" content="Tes keyboard online: deteksi real-time tombol yang ditekan, layout 60%, 65%, 75%, TKL, dan Full Size.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div class="brand">
+        <h1>Keyboard Tester</h1>
+        <p class="sub">Tekan tombol di keyboard fisikmu. Tombol yang terdeteksi akan menyala hijau.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="tabs" id="layoutTabs" role="tablist" aria-label="Pilih layout keyboard"></div>
+
+        <div class="actions">
+          <label class="search">
+            <span class="sr-only">Cari tombol</span>
+            <input id="search" type="search" placeholder="Cari tombol (mis. Enter, F5, Win)" autocomplete="off" spellcheck="false">
+          </label>
+          <button class="btn" id="btnReset" type="button">Reset</button>
+          <button class="btn" id="btnFull" type="button">Layar penuh</button>
+        </div>
+      </div>
+      <p class="search-info" id="searchInfo" aria-live="polite"></p>
+    </header>
+
+    <main>
+      <section class="stage" aria-label="Tampilan keyboard">
+        <div class="board-wrap" id="boardWrap">
+          <div class="board" id="board" role="group" aria-label="Keyboard virtual"></div>
+        </div>
+        <div class="legend">
+          <span><i class="dot dot-idle"></i>Belum diuji</span>
+          <span><i class="dot dot-down"></i>Sedang ditekan</span>
+          <span><i class="dot dot-ok"></i>Sudah diuji</span>
+          <label class="toggle">
+            <input type="checkbox" id="chkPrevent" checked>
+            <span>Cegah aksi bawaan browser (F5, Tab, Ctrl+...)</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panels">
+        <article class="card last" aria-live="polite">
+          <h2>Tombol terakhir</h2>
+          <div class="last-key" id="lastKey">–</div>
+          <dl class="facts">
+            <div><dt>key</dt><dd id="fKey">–</dd></div>
+            <div><dt>code</dt><dd id="fCode">–</dd></div>
+            <div><dt>keyCode</dt><dd id="fKeyCode">–</dd></div>
+            <div><dt>Posisi</dt><dd id="fLoc">–</dd></div>
+            <div><dt>Modifier</dt><dd id="fMods">–</dd></div>
+            <div><dt>Ditekan ulang</dt><dd id="fRepeat">–</dd></div>
+          </dl>
+        </article>
+
+        <article class="card progress">
+          <h2>Progres tes</h2>
+          <div class="progress-num"><strong id="pTested">0</strong><span> dari <b id="pTotal">0</b> tombol</span></div>
+          <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pBar"><div class="bar-fill" id="pFill"></div></div>
+          <ul class="stats">
+            <li><span>Selesai</span><b id="pPercent">0%</b></li>
+            <li><span>Belum diuji</span><b id="pLeft">0</b></li>
+            <li><span>Total penekanan</span><b id="pPresses">0</b></li>
+            <li><span>Sedang ditahan</span><b id="pHeld">0</b></li>
+          </ul>
+          <h3>Belum diuji</h3>
+          <div class="chips" id="untested"></div>
+        </article>
+
+        <article class="card log-card">
+          <h2>Riwayat</h2>
+          <ol class="log" id="log" aria-live="off"></ol>
+          <p class="empty" id="logEmpty">Belum ada tombol yang ditekan.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Semua proses berjalan di browser kamu. Tidak ada data yang dikirim ke server.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
